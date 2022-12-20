@@ -11,33 +11,31 @@ const init = {
 }
 
 const actions = {
-    add(state, title) {
+    add({ todos }, title) {
         if (title) {
-            const newState = {...state};
-            console.log(newState)
-            newState.todos.push({title, completed: false});
-            state = newState
-            storage.set(newState.todos)
+            todos.push({title, completed: false});
+            storage.set(todos)
         }
     },
-    toggle(state, index) {
-        const newState = {...state};
-        const todo = newState.todos[index];
+    toggle({ todos }, index) {
+        const todo = todos[index];
         todo.completed = !todo.completed;
-        state = newState;
-        storage.set(newState.todos);
+        storage.set(todos);
     },
-    toggleAll(state, completed) {
-        const newState = {...state};
-        newState.todos.forEach(todo => todo.completed = completed)
-        state = newState;
-        storage.set(newState.todos)
+    toggleAll({ todos }, completed) {
+        todos.forEach(todo => todo.completed = completed)
+        storage.set(todos)
     },
-    destroy(state, index) {
-        const newState = {...state};
-        newState.todos.splice(index, 1);
-        state = newState;
-        storage.set(newState.todos)
+    destroy({ todos }, index) {
+        todos.splice(index, 1);
+        storage.set(todos)
+    },
+    switchFilter(state, filter) {
+        state.filter = filter
+    },
+    clearCompleted(state) {
+        state.todos = state.todos.filter(state.filters.active);
+        storage.set(state.todos)
     }
 }
 
