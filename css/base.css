@@ -1,3 +1,7 @@
+.cursor {
+	cursor: pointer;
+}
+
 hr {
 	margin: 20px 0;
 	border: 0;

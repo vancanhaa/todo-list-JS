@@ -5,7 +5,6 @@ import TodoItem from "./TodoItem.js";
 
 
 function TodoList({ todos, filter, filters }) {
-    console.log(filters)
     return html`
     <section class="main">
         <input 
@@ -15,7 +14,7 @@ function TodoList({ todos, filter, filters }) {
             onchange="dispatch('toggleAll', this.checked)"
             ${todos.every(filters.completed) && 'checked'}
         >
-        <label for="toggle-all">Mark all as complete</label>
+        <label for="toggle-all" class="cursor">Mark all as complete</label>
         <ul class="todo-list">
             ${todos
                 .filter(filters[filter])

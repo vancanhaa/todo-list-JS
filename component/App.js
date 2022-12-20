@@ -12,6 +12,10 @@ function App({ todos }) {
             ${todos.length > 0 && TodoList()}
             ${todos.length > 0 && Footer()}
         </section>
+        <footer class="info">
+			<p>Double-click title to edit a todo</p>
+			<p>Created by <a href="https://github.com/vancanhaa/todo-list-JS">Pham Van Canh</a></p>
+		</footer>
         
     `
 }
