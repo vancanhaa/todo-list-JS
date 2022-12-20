@@ -14,6 +14,7 @@ const actions = {
     add(state, title) {
         if (title) {
             const newState = {...state};
+            console.log(newState)
             newState.todos.push({title, completed: false});
             state = newState
             storage.set(newState.todos)
@@ -29,6 +30,12 @@ const actions = {
     toggleAll(state, completed) {
         const newState = {...state};
         newState.todos.forEach(todo => todo.completed = completed)
+        state = newState;
+        storage.set(newState.todos)
+    },
+    destroy(state, index) {
+        const newState = {...state};
+        newState.todos.splice(index, 1);
         state = newState;
         storage.set(newState.todos)
     }
